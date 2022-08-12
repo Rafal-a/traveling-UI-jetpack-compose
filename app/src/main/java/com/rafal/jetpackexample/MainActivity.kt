@@ -9,6 +9,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -52,6 +53,7 @@ class MainActivity : ComponentActivity() {
                     Column {
                         Greeting()
                         SearchBar()
+                        Categories(listOf("🏔️ Mountain", "🏕️ Camp", "🌲 Forest"))
 
                     }
 
@@ -145,3 +147,43 @@ fun SearchBar() {
 
     }
 }
+
+@Composable
+fun Categories(categories: List<String>) {
+
+    var selectedChip by remember {
+        //the first chip is selected
+        mutableStateOf(0)
+    }
+        Text(
+            text = "Categories",
+            style = TextStyle(
+                fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = Color.Black,
+            ),
+            modifier = Modifier.padding(8.dp)
+        )
+        LazyRow {
+            items(categories.size) {
+                Box(Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 12.dp, vertical = 8.dp)
+                    .clip(shape = RoundedCornerShape(50))
+                    .background(Color.White)
+                    .border(1.dp, color = Color(0xFFD5D3D3) , CircleShape)
+
+                    .clickable {
+                        selectedChip = it
+                    }
+                    .background(
+                        if (selectedChip == it )Color(0xFFD5D3D3)
+                        else
+                            Color.Transparent
+                    )
+                    .padding(12.dp)
+                ){
+                    Text(text = categories[it], color = Color.Black)
+                }
+            }
+        }
+
+    }
