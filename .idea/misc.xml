@@ -5,7 +5,10 @@
       <map>
         <entry key="..\:/AndroidJetpack/app/src/main/res/drawable/ic_apps.xml" value="0.1" />
         <entry key="..\:/AndroidJetpack/app/src/main/res/drawable/ic_girl1.xml" value="0.1" />
+        <entry key="..\:/AndroidJetpack/app/src/main/res/drawable/ic_heart.xml" value="0.111" />
+        <entry key="..\:/AndroidJetpack/app/src/main/res/drawable/ic_home.xml" value="0.111" />
         <entry key="..\:/AndroidJetpack/app/src/main/res/drawable/ic_man1.xml" value="0.1" />
+        <entry key="..\:/AndroidJetpack/app/src/main/res/drawable/ic_person.xml" value="0.111" />
         <entry key="..\:/AndroidJetpack/app/src/main/res/drawable/ic_search.xml" value="0.1175" />
         <entry key="..\:/AndroidJetpack/app/src/main/res/drawable/ic_settings.xml" value="0.1175" />
       </map>

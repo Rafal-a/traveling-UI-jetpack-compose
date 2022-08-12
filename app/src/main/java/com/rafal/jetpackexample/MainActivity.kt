@@ -13,7 +13,10 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.AccountBox
 import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.material3.IconButton
@@ -26,7 +29,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.*
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -66,8 +71,9 @@ class MainActivity : ComponentActivity() {
                                     "USA,Texas",
                                     4.0,
                                 ),
-                            ),
+                            )
                         )
+                        BottomNavigationBar()
 
                     }
 
@@ -114,7 +120,6 @@ fun SearchBar() {
             .fillMaxWidth()
             .height(50.dp)
             .padding(8.dp, 0.dp),
-        // shadowElevation = AppBarDefaults.TopAppBarElevation,
         color = Color.White
     ) {
 
@@ -206,8 +211,8 @@ fun Categories(categories: List<String>) {
 fun DataList(features: List<Feature>) {
     LazyRow(
         modifier = Modifier
-            .fillMaxHeight()
-            .padding(8.dp, 4.dp),
+            .height(420.dp),
+        //.padding(8.dp, 16.dp),
         contentPadding = PaddingValues(8.dp)
     ) {
         items(features.size) {
@@ -248,8 +253,8 @@ fun FeatureItem(feature: Feature) {
                 .align(Alignment.TopStart)
                 .clip(RoundedCornerShape(50))
                 .background(Color.Transparent)
-               // .alpha(0.5f)
-                .padding(8.dp,6.dp)
+                // .alpha(0.5f)
+                .padding(8.dp, 6.dp)
         )
 
         Text(
@@ -261,15 +266,54 @@ fun FeatureItem(feature: Feature) {
                 .padding(16.dp)
                 .align(Alignment.BottomCenter)
         )
+                Image(
+                    painter = painterResource(id = R.drawable.ic_heart),
+                    contentDescription = "heart",
+                    modifier = Modifier
+                        .padding(18.dp)
+                        .align(Alignment.TopEnd)
+                )
 
-        Icon(imageVector = Icons.Outlined.Favorite, contentDescription = null,
-            tint = Color.LightGray,
-            modifier = Modifier
-                .padding(16.dp)
-                .align(Alignment.TopEnd)
 
-        )
+        }
 
 
+    }
+
+@Composable
+fun BottomNavigationBar() {
+    BottomNavigation(
+        modifier = Modifier
+            .fillMaxWidth(),
+        backgroundColor = Color.White
+    ) {
+        Row(
+            Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
+
+        ) {
+            IconButton(onClick = { /*TODO*/ }) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_home),
+                    contentDescription = "home"
+                )
+
+            }
+            IconButton(onClick = { /*TODO*/ }) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_heart),
+                    contentDescription = "favorite"
+                )
+
+            }
+            IconButton(onClick = { /*TODO*/ }) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_person),
+                    contentDescription = "profile"
+                )
+
+            }
+        }
     }
 }

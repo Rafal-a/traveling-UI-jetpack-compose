@@ -2,6 +2,7 @@ package com.rafal.jetpackexample.ui.theme
 
 import android.app.Activity
 import android.os.Build
+import android.provider.CalendarContract
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -22,7 +23,7 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = white,
+    primary = lightWhite,
     secondary = PurpleGrey40,
     tertiary = Pink40
 
